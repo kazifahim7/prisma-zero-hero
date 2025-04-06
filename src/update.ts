@@ -20,7 +20,7 @@ const update = async () => {
         create: {
             title: "this this upsert data",
             content: "this is the best content ever",
-            author: "kazi fahim"
+            authorId:1
         }
 
     })

@@ -26,6 +26,7 @@ model User {
   id       Int      @id @default(autoincrement())
   username String   @unique
   email    String
+  age      Int @default(0)
   role     UserRole @default(user)
   profile  Profile? // one to one relation
   post     Post[] // one to many relation
@@ -41,8 +42,8 @@ model Profile {
 }
 
 model Category {
-  id   Int    @id @default(autoincrement())
-  name String
+  id       Int            @id @default(autoincrement())
+  name     String
   category PostCategory[]
 }
 
@@ -52,10 +53,10 @@ enum UserRole {
 }
 
 model PostCategory {
-  postId Int
-  post Post @relation(fields: [postId],references: [id])
+  postId     Int
+  post       Post     @relation(fields: [postId], references: [id])
   cateGoryId Int
-  category Category @relation(fields: [cateGoryId],references: [id])
-  @@id([postId,cateGoryId]) // this is a composite primary key  and this key must be primary key
+  category   Category @relation(fields: [cateGoryId], references: [id])
 
+  @@id([postId, cateGoryId]) // this is a composite primary key  and this key must be primary key
 }
